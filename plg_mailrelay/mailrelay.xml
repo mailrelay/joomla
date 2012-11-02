@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="2.5" type="plugin" group="user">
-	<name>plg_user_mailrelay</name>
-	<author>Consultor PC</author>
+	<name>Mailrelay - sync plugin</name>
+	<author>Mailerlay</author>
 	<creationDate>October 2012</creationDate>
 	<copyright>(C) 2005 - 2012 Open Source Matters. All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
