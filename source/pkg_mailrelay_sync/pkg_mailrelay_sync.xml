@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extension type="package" version="1.6">
+<name>Mailrelay Package</name>
+<author>Mailrelay Team</author>
+<creationDate>Oct 2012</creationDate>
+<packagename>mailrelay_sync</packagename>
+<version>1.0.0</version>
+<url>http://www.mailrelay.com/</url>
+<packager>Mailrelay Team</packager>
+<description>Joomla package for Mailrelay</description>
+<files folder="packages">
+	<file type="component" id="mailrelay_sync">com_mailrelay_sync.zip</file>
+	<file type="plugin" id="mailrelay_sync" group="user">plg_user_mailrelay.zip</file>
+</files>
+</extension>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form addrulepath="/administrator/components/com_mailrelay_sync/models/rules">
+	<fieldset name="general" label="COM_MAILRELAY_GENERAL_CONFIG_LABEL">
+		<field name="automatically_sync_user" type="checkbox" label="COM_MAILRELAY_MAILRELAY_FIELD_AUTOSYNC_LABEL" default="1" value="1" />
+		<field name="automatically_unsync_user" type="checkbox" label="COM_MAILRELAY_MAILRELAY_FIELD_AUTOUNSYNC_LABEL" default="1" value="1" />
+	</fieldset>
+	<fieldset name="params" label="COM_MAILRELAY_SYNC_CONFIG_LABEL">
+		<field name="host" type="text" label="COM_MAILRELAY_MAILRELAY_FIELD_HOST_LABEL" size="80" class="inputbox" required="true" default="" validate="host" />
+		<field name="user" type="text" label="COM_MAILRELAY_MAILRELAY_FIELD_USER_LABEL" size="80" class="inputbox" required="true" default="" />
+		<field name="password" type="password" label="COM_MAILRELAY_MAILRELAY_FIELD_PASSWORD_LABEL" size="80" class="inputbox" required="true" default="" />
+		<field name="groups" type="groups" label="COM_MAILRELAY_MAILRELAY_FIELD_GROUPS_LABEL" multiple="true" default="" required="true" />
+	</fieldset>
+</form>
