@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="2.5" type="plugin" group="user">
+	<name>Mailrelay - sync plugin</name>
+	<author>Mailerlay</author>
+	<creationDate>October 2012</creationDate>
+	<copyright>(C) 2005 - 2012 Open Source Matters. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>info@mailrelay.com</authorEmail>
+	<authorUrl>www.mailrelay.com</authorUrl>
+	<version>2.5.0</version>
+	<description>Mailrelay user sync plugin</description>
+	<files>
+		<filename plugin="mailrelay">mailrelay.php</filename>
+		<filename>index.html</filename>
+	</files>
+</extension>
