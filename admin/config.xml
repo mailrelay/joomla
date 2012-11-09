@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+	<fieldset name="basic" description="COM_MAILRELAY_BASIC_CONFIG_DESC" label="COM_MAILRELAY_BASIC_CONFIG_LABEL">
+		<field name="automatically_sync_users" type="radio"
+        	                label="COM_MAILRELAY_MAILRELAY_FIELD_AUTOSYNC_LABEL"
+                	        description="COM_MAILRELAY_MAILRELAY_FIELD_AUTOSYNC_DESC"
+                        	default="1">
+                        	<option value="0">JNO</option>
+                        	<option value="1">JYES</option>
+        	</field>
+		<field name="automatically_unsync_users" type="radio"
+        	                label="COM_MAILRELAY_MAILRELAY_FIELD_AUTOUNSYNC_LABEL"
+                	        description="COM_MAILRELAY_MAILRELAY_FIELD_AUTOUNSYNC_DESC"
+                        	default="1">
+                        	<option value="0">JNO</option>
+                        	<option value="1">JYES</option>
+        	</field>
+	</fieldset>
+
+	<fieldset name="sync" description="COM_MAILRELAY_SYNC_CONFIG_DESC" label="COM_MAILRELAY_SYNC_CONFIG_LABEL">
+		<fieldset name="host" type="text" label="COM_MAILRELAY_MAILRELAY_FIELD_HOST_LABEL" size="40" required="true" />
+		<fieldset name="user" type="text" label="COM_MAILRELAY_MAILRELAY_FIELD_USER_LABEL" size="40" required="true" />
+		<fieldset name="password" type="password" label="COM_MAILRELAY_MAILRELAY_FIELD_PASSWORD_LABEL" size="40" required="true" />
+	</fieldset>
+</config>
