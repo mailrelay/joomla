@@ -104,6 +104,11 @@ class mailrelaysyncModelSettings extends JModelAdmin
 		curl_setopt($curl, CURLOPT_POST, 1);
 		curl_setopt($curl, CURLOPT_POSTFIELDS, $params);
 
+                $headers = array(
+	                'X-Request-Origin' => 'Joomla|1.1|2.5' 
+                );
+                curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+
 		// call the page, it will return a JSON
 		$result = curl_exec($curl);
 
@@ -145,6 +150,11 @@ class mailrelaysyncModelSettings extends JModelAdmin
 			curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 			curl_setopt($curl, CURLOPT_POST, 1);
 			curl_setopt($curl, CURLOPT_POSTFIELDS, $params);
+
+                        $headers = array(
+                                'X-Request-Origin' => 'Joomla|1.1|2.5' 
+                        );
+                        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
 
 			$result = curl_exec($curl);
 			$jsonResult = json_decode($result);
@@ -203,6 +213,11 @@ class mailrelaysyncModelSettings extends JModelAdmin
                         curl_setopt($curl, CURLOPT_POST, 1);            
                         curl_setopt($curl, CURLOPT_POSTFIELDS, $params);
 
+                        $headers = array(
+                                'X-Request-Origin' => 'Joomla|1.1|2.5' 
+                        );
+                        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+
                         $result = curl_exec($curl);
                         $jsonResult = json_decode($result);
 
@@ -232,6 +247,11 @@ class mailrelaysyncModelSettings extends JModelAdmin
                                 curl_setopt($curl, CURLOPT_POST, 1);
                                 curl_setopt($curl, CURLOPT_POSTFIELDS, $post);
 
+	                        $headers = array(
+        	                        'X-Request-Origin' => 'Joomla|1.1|2.5' 
+                	        );
+                        	curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+
                                 $result = curl_exec($curl);
                                 
                                 $jsonResult = json_decode($result);
@@ -257,6 +277,10 @@ class mailrelaysyncModelSettings extends JModelAdmin
                                 curl_setopt($curl, CURLOPT_POST, 1);
                                 curl_setopt($curl, CURLOPT_POSTFIELDS, $post);
 
+	                        $headers = array(
+        	                        'X-Request-Origin' => 'Joomla|1.1|2.5' 
+                	        );
+                        	curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
                                 $result = curl_exec($curl);
                                 
                                 $jsonResult = json_decode($result);

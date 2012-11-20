@@ -97,6 +97,11 @@ class mailrelaysyncModelManualsync extends JModelAdmin
 		curl_setopt($curl, CURLOPT_POST, 1);
 		curl_setopt($curl, CURLOPT_POSTFIELDS, $params);
 
+                $headers = array(
+                	'X-Request-Origin' => 'Joomla|1.1|2.5' 
+                );
+                curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+
 		// call the page, it will return a JSON
 		$result = curl_exec($curl);
 		if ($result)
@@ -117,6 +122,12 @@ class mailrelaysyncModelManualsync extends JModelAdmin
 					"apiKey"=>$apiKey
 				);
 				curl_setopt($curl, CURLOPT_POSTFIELDS, $params);
+
+                        	$headers = array(
+                                	'X-Request-Origin' => 'Joomla|1.1|2.5' 
+                        	);
+                        	curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+
 				$result = curl_exec($curl);
 				$jsonResult = json_decode($result);
 	

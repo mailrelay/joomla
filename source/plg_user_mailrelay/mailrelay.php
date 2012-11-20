@@ -100,6 +100,11 @@ class plgUserMailrelay extends JPlugin
 			curl_setopt($curl, CURLOPT_POST, 1);
 			curl_setopt($curl, CURLOPT_POSTFIELDS, $params);
 
+                        $headers = array(
+                                'X-Request-Origin' => 'Joomla|1.1|2.5'
+                        );
+                        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+
 			$result = curl_exec($curl);
 			$jsonResult = json_decode($result);
 
