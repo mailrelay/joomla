@@ -105,7 +105,7 @@ class mailrelaysyncModelSettings extends JModelAdmin
 		curl_setopt($curl, CURLOPT_POSTFIELDS, $params);
 
                 $headers = array(
-	                'X-Request-Origin' => 'Joomla|1.1|2.5' 
+	                'X-Request-Origin' => 'Joomla|1.1|'.JPlatform::getShortVersion() 
                 );
                 curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
 
@@ -152,7 +152,7 @@ class mailrelaysyncModelSettings extends JModelAdmin
 			curl_setopt($curl, CURLOPT_POSTFIELDS, $params);
 
                         $headers = array(
-                                'X-Request-Origin' => 'Joomla|1.1|2.5' 
+                                'X-Request-Origin' => 'Joomla|1.1|'.JPlatform::getShortVersion() 
                         );
                         curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
 
@@ -214,7 +214,7 @@ class mailrelaysyncModelSettings extends JModelAdmin
                         curl_setopt($curl, CURLOPT_POSTFIELDS, $params);
 
                         $headers = array(
-                                'X-Request-Origin' => 'Joomla|1.1|2.5' 
+                                'X-Request-Origin' => 'Joomla|1.1|'.JPlatform::getShortVersion() 
                         );
                         curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
 
@@ -248,7 +248,7 @@ class mailrelaysyncModelSettings extends JModelAdmin
                                 curl_setopt($curl, CURLOPT_POSTFIELDS, $post);
 
 	                        $headers = array(
-        	                        'X-Request-Origin' => 'Joomla|1.1|2.5' 
+        	                        'X-Request-Origin' => 'Joomla|1.1|'.JPlatform::getShortVersion() 
                 	        );
                         	curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
 
@@ -278,7 +278,7 @@ class mailrelaysyncModelSettings extends JModelAdmin
                                 curl_setopt($curl, CURLOPT_POSTFIELDS, $post);
 
 	                        $headers = array(
-        	                        'X-Request-Origin' => 'Joomla|1.1|2.5' 
+        	                        'X-Request-Origin' => 'Joomla|1.1|'.JPlatform::getShortVersion() 
                 	        );
                         	curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
                                 $result = curl_exec($curl);
