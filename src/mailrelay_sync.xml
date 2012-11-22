@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="component" version="1.6">
+<name>MailRelay_Sync</name>
+<author>Jose Argudo</author>
+<creationDate>March 2011</creationDate>
+<copyright></copyright>
+<license></license>
+<authorEmail>jose@joseargudo.com</authorEmail>
+<authorUrl>www.joseargudo.com</authorUrl>
+<version>1.0</version>
+<description>MailRelay Sync Component</description>
+<administration>
+	<menu>MailRelay Sync</menu> 
+	<files folder="admin">
+		<filename>admin.mailrelay_sync.php</filename>
+		<filename>controller.php</filename>
+		<filename>index.html</filename>
+		<filename>views/index.html</filename>
+		<filename>views/mailrelay_sync/index.html</filename>
+		<filename>views/mailrelay_sync/view.html.php</filename>
+		<filename>views/mailrelay_sync/tmpl/index.html</filename>
+		<filename>views/mailrelay_sync/tmpl/default.php</filename>
+		<filename>views/mailrelay_sync/tmpl/default_groups.php</filename>
+		<filename>views/mailrelay_sync/tmpl/default_synced.php</filename>
+		<filename>models/index.html</filename>
+		<filename>models/mailrelay_sync.php</filename>
+	</files>
+    <languages folder="admin">
+            <language tag="en-GB">language/en-GB/en-GB.com_mailrelay_sync.sys.ini</language>
+    </languages>    
+</administration>
+</install>
