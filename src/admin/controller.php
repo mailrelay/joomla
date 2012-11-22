@@ -42,7 +42,7 @@ class MailRelay_SyncController extends JController
 		
                 $version = new JVersion;
                 $headers = array(
-                        'X-Request-Origin' => 'Joomla1.5|1.0|'.$version->getShortVersion()
+                        'X-Request-Origin: Joomla1.5|1.0|'.$version->getShortVersion()
                 );
                 curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
 
@@ -73,7 +73,7 @@ class MailRelay_SyncController extends JController
 			
 	                $version = new JVersion;
         	        $headers = array(
-                	        'X-Request-Origin' => 'Joomla1.5|1.0|'.$version->getShortVersion()
+                	        'X-Request-Origin: Joomla1.5|1.0|'.$version->getShortVersion()
                		);
                 	curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
 
@@ -129,7 +129,7 @@ class MailRelay_SyncController extends JController
 			
 	                $version = new JVersion;
         	        $headers = array(
-                	        'X-Request-Origin' => 'Joomla1.5|1.0|'.$version->getShortVersion()
+                	        'X-Request-Origin: Joomla1.5|1.0|'.$version->getShortVersion()
                 	);
                 	curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
 
@@ -168,7 +168,7 @@ class MailRelay_SyncController extends JController
 				
 		                $version = new JVersion;
                 		$headers = array(
-                        		'X-Request-Origin' => 'Joomla1.5|1.0|'.$version->getShortVersion()
+                        		'X-Request-Origin: Joomla1.5|1.0|'.$version->getShortVersion()
                 		);
                 		curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
 
@@ -200,7 +200,7 @@ class MailRelay_SyncController extends JController
 				
                 		$version = new JVersion;
 		                $headers = array(
-                        		'X-Request-Origin' => 'Joomla1.5|1.0|'.$version->getShortVersion()
+                        		'X-Request-Origin: Joomla1.5|1.0|'.$version->getShortVersion()
                 		);
                 		curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
 
