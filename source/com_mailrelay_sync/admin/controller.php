@@ -13,7 +13,7 @@ defined('_JEXEC') or die('Restricted access');
 
 jimport('joomla.application.component.controller');
 
-class MailrelaySyncController extends JController
+class MailrelaySyncController extends JControllerLegacy
 {
 	/**
 	* Here we try to verify user data agains the API
@@ -224,8 +224,9 @@ class MailrelaySyncController extends JController
 		// Set the submenu
                 MailrelaySyncHelper::addSubmenu('messages');
 
-		$app = JFactory::getApplication();
-		$app->set('JComponentTitle', JText::_("COM_MAILRELAY_TITLE"));
+		//$app = JFactory::getApplication();
+		//$app->set('JComponentTitle', JText::_("COM_MAILRELAY_TITLE"));
+		//$app->setMessage(JText::_("COM_MAILRELAY_TITLE"));
 
                 // Set the toolbar
 		parent::display($cachable);

@@ -105,7 +105,7 @@ class mailrelaysyncModelSettings extends JModelAdmin
 		curl_setopt($curl, CURLOPT_POSTFIELDS, $params);
 
                 $headers = array(
-	                'X-Request-Origin: Joomla2.5|1.1|'.JPlatform::getShortVersion() 
+	                'X-Request-Origin: Joomla3.0|1.1|'.JPlatform::getShortVersion() 
                 );
                 curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
 

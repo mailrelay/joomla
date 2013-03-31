@@ -10,6 +10,10 @@
 // No direct access.
 defined('_JEXEC') or die;
 
+if(!defined('DS')){
+    define('DS',DIRECTORY_SEPARATOR);
+}
+
 /**
  * Class for Mailrelay
  * @package		Mailrelay
@@ -67,7 +71,7 @@ class plgUserMailrelay extends JPlugin
 			$path =  JPATH_ADMINISTRATOR.DS.'components'.DS.'com_mailrelay_sync'.DS.'models';
 			JLoader::import("settings", $path);
 		}
-		$model = JModel::getInstance("Settings", "mailrelaysyncModel");
+		$model = JModelLegacy::getInstance("Settings", "mailrelaysyncModel");
 		$data = $this->loadSettings($model);
 
 		if ($data["autosync"])
@@ -178,7 +182,7 @@ class plgUserMailrelay extends JPlugin
 		{
 			JLoader::import("settings", JPATH_ADMINISTRATOR.DS.'components'.DS.'com_mailrelay_sync'.DS.'models');
 		}
-		$model = JModel::getInstance("Settings", "mailrelaysyncModel");
+		$model = JModelLegacy::getInstance("Settings", "mailrelaysyncModel");
 		$data = $this->loadSettings($model);
 
 		if ($data["autounsync"])

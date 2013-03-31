@@ -15,7 +15,7 @@ class JFormFieldGroups extends JFormField
 	$password = $this->form->getValue("password");
 
 	// retrieve groups
-	$model = JModel::getInstance("Settings", "MailrelaySyncModel");
+	$model = JModelLegacy::getInstance("Settings", "MailrelaySyncModel");
 	$result = $model->verify($host, $user, $password);
 
 	$entry_groups = array();

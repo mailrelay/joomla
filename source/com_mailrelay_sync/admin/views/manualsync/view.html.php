@@ -12,7 +12,7 @@
 defined('_JEXEC') or die('Restricted access');
 
 jimport( 'joomla.application.component.view');
-class MailrelaySyncViewManualsync extends JView
+class MailrelaySyncViewManualsync extends JViewLegacy
 {
 	function display ($tpl = null)
 	{
@@ -58,7 +58,7 @@ class MailrelaySyncViewManualsync extends JView
         protected function setDocument() 
         {
                 $document = JFactory::getDocument();
-                $document->setTitle(JText::_('COM_MAILRELAY_STARTSYNC_LABEL'));
+                $document->setTitle(JText::_('COM_MAILRELAY_SYNC_START_LABEL'));
                 $document->addScript(JURI::root() . $this->script);
                 $document->addScript(JURI::root() . "/administrator/components/com_mailrelay_sync/views/settings/submitbutton.js");
         }

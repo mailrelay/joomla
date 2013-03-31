@@ -12,7 +12,7 @@ class JFormRuleHost extends JFormRule
 		// try to connect with that settings
 
 		// validacion de datos correctos contra mailrelay
-		$model = JModel::getInstance("Settings", "MailrelaySyncModel");
+		$model = JModelLegacy::getInstance("Settings", "MailrelaySyncModel");
 		$result = $model->verify($input->get("host"), $input->get("user"), $input->get("password"));
 		if (!$result)
 		{

@@ -12,7 +12,7 @@
 defined('_JEXEC') or die('Restricted access');
 
 jimport( 'joomla.application.component.view');
-class MailrelaySyncViewManualsyncfinished extends JView
+class MailrelaySyncViewManualsyncfinished extends JViewLegacy
 {
 	function display ($tpl = null)
 	{

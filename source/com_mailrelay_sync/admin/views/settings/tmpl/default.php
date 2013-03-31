@@ -14,7 +14,7 @@ JHtml::_('behavior.tooltip');
 JHtml::_('behavior.formvalidation');
 
 ?>
-<form action="<?php echo JRoute::_("index.php?option=com_mailrelay_sync&layout=default"); ?>" method="post" name="adminForm" id="defaultForm" class="form-validate">
+<form action="<?php echo JRoute::_("index.php?option=com_mailrelay_sync&layout=default"); ?>" method="post" name="adminForm" id="adminForm" class="form-validate">
 	<legend><?php echo JText::_('COM_MAILRELAY_SYNC_FORM_DEFAULT_DETAILS'); ?></legend><br />
 
 	<fieldset name="general">
