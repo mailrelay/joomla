@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension type="component" version="2.5">
+<extension type="component" version="3.0">
 	<name>MailRelay_Sync</name>
 	<author>Mailrelay</author>
 	<creationDate>September 2012</creationDate>
@@ -23,7 +23,7 @@
 	</uninstall>
 
 	<administration>
-		<menu>MailRelay Sync</menu> 
+		<menu>COM_MAILRELAY_SYNC</menu> 
 		<files folder="admin">
 			<filename>mailrelay_sync.php</filename>
 			<filename>controller.php</filename>
