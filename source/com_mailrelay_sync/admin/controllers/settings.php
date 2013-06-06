@@ -133,7 +133,7 @@ class MailRelaySyncControllerSettings extends JControllerForm
 		{
 			$validData["automatically_unsync_user"] = 0;
 		}
-		
+
                 if (!$model->save($validData))
                 {
                         // Save the data in the session.

@@ -112,7 +112,7 @@ class MailRelaySyncControllerManualsync extends JControllerForm
 		$validData["groups"] = implode(",", $validData["groups"]);
 
 		// start with sync
-                $number_synced = $model->sync($validData["host"], $validData["user"], $validData["password"], $validData["groups"]);
+                $number_synced = $model->sync($validData["host"], $validData["apiKey"], $validData["groups"]);
 
                 //Now that the sync process has ended, we redirect to the show process
                 $this->setRedirect('index.php?option=com_mailrelay_sync&view=manualsyncfinished&extension=com_mailrelay_sync&synced=' . $number_synced);

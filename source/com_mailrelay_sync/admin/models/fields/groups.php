@@ -11,12 +11,11 @@ class JFormFieldGroups extends JFormField
     {
 	// read form values to generate groups array
 	$host = $this->form->getValue("host");
-	$user = $this->form->getValue("user");
-	$password = $this->form->getValue("password");
+	$apiKey = $this->form->getValue("apiKey");
 
 	// retrieve groups
 	$model = JModelLegacy::getInstance("Settings", "MailrelaySyncModel");
-	$result = $model->verify($host, $user, $password);
+	$result = $model->verify($host, $apiKey);
 
 	$entry_groups = array();
 	if ($result && is_array($result))
