@@ -7,7 +7,7 @@
 	<license></license>
 	<authorEmail>info@consultorpc.com</authorEmail>
 	<authorUrl>www.consultorpc.com</authorUrl>
-	<version>1.1</version>
+	<version>1.2</version>
 	<description>MailRelay Sync Component</description>
 
 	<install>
@@ -23,7 +23,7 @@
 	</uninstall>
 
 	<administration>
-		<menu>COM_MAILRELAY_SYNC</menu> 
+		<menu>COM_MAILRELAY_SYNC</menu>
 		<files folder="admin">
 			<filename>mailrelay_sync.php</filename>
 			<filename>controller.php</filename>
@@ -39,6 +39,6 @@
 	    	<languages folder="admin">
         	    <language tag="en-GB">language/en-GB/en-GB.com_mailrelay_sync.ini</language>
         	    <language tag="en-GB">language/en-GB/en-GB.com_mailrelay_sync.sys.ini</language>
-    		</languages>    
+    		</languages>
 	</administration>
 </extension>

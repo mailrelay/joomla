@@ -102,7 +102,7 @@ class mailrelaysyncModelSettings extends JModelAdmin
 		curl_setopt($curl, CURLOPT_POSTFIELDS, $params);
 
         $headers = array(
-                'X-Request-Origin: Joomla3.0|1.1|'.JPlatform::getShortVersion()
+                'X-Request-Origin: Joomla3.0|1.2|'.JPlatform::getShortVersion()
         );
         curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
 
@@ -159,7 +159,7 @@ class mailrelaysyncModelSettings extends JModelAdmin
                         curl_setopt($curl, CURLOPT_POSTFIELDS, $params);
 
                         $headers = array(
-                                'X-Request-Origin: Joomla3.0|1.1|'.JPlatform::getShortVersion()
+                                'X-Request-Origin: Joomla3.0|1.2|'.JPlatform::getShortVersion()
                         );
                         curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
 
@@ -193,7 +193,7 @@ class mailrelaysyncModelSettings extends JModelAdmin
                                 curl_setopt($curl, CURLOPT_POSTFIELDS, $post);
 
 	                        $headers = array(
-        	                        'X-Request-Origin: Joomla3.0|1.1|'.JPlatform::getShortVersion()
+        	                        'X-Request-Origin: Joomla3.0|1.2|'.JPlatform::getShortVersion()
                 	        );
                         	curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
 
@@ -223,7 +223,7 @@ class mailrelaysyncModelSettings extends JModelAdmin
                                 curl_setopt($curl, CURLOPT_POSTFIELDS, $post);
 
 	                        $headers = array(
-        	                        'X-Request-Origin: Joomla3.0|1.1|'.JPlatform::getShortVersion()
+        	                        'X-Request-Origin: Joomla3.0|1.2|'.JPlatform::getShortVersion()
                 	        );
                         	curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
                                 $result = curl_exec($curl);
