@@ -32,7 +32,7 @@ class mailrelaysyncModelSettings extends JModelAdmin
          * @return      JTable  A database object
          * @since       1.6
          */
-        public function getTable($type = 'MailRelay', $prefix = 'Table', $config = array()) 
+        public function getTable($type = 'MailRelay', $prefix = 'Table', $config = array())
         {
                 $table = JTable::getInstance($type, $prefix, $config);
 		return $table;
@@ -45,11 +45,11 @@ class mailrelaysyncModelSettings extends JModelAdmin
          * @return      mixed   A JForm object on success, false on failure
          * @since       1.6
          */
-        public function getForm($data = array(), $loadData = true) 
+        public function getForm($data = array(), $loadData = true)
         {
                 // Get the form.
                 $form = $this->loadForm('com_mailrelay_sync.settings', 'settings', array('control' => 'jform', 'load_data' => $loadData));
-                if (empty($form)) 
+                if (empty($form))
                 {
                         return false;
                 }
@@ -60,7 +60,7 @@ class mailrelaysyncModelSettings extends JModelAdmin
          *
          * @return string       Script files
          */
-        public function getScript() 
+        public function getScript()
         {
                 return 'administrator/components/com_mailrelay_sync/models/forms/settings.js';
         }
@@ -70,12 +70,12 @@ class mailrelaysyncModelSettings extends JModelAdmin
          * @return      mixed   The data for the form.
          * @since       1.6
          */
-        protected function loadFormData() 
+        protected function loadFormData()
         {
 		$data = JFactory::getApplication()->getUserState('com_mailrelay_sync.edit.settings.data', array());
 
                 // Check the session for previously entered form data.
-                if (empty($data)) 
+                if (empty($data))
                 {
                         $data = $this->getItem(1);
                 }
@@ -88,90 +88,36 @@ class mailrelaysyncModelSettings extends JModelAdmin
 		return "http://".$host."/ccm/admin/api/version/2/&type=json";
 	}
 
-	// given the data, gets the API key to operate
-	public function getApiKey($host, $user, $password)
+	public function verify($host, $apiKey)
 	{
 		$url = $this->getApiUrl($host);
 		$curl = curl_init($url);
 
 		$params = array(
-			"function"=>"doAuthentication",
-			"username"=>$user,
-			"password"=>$password
+			"function" => "getGroups",
+			"apiKey" => $apiKey
 		);
-
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($curl, CURLOPT_POST, 1);
 		curl_setopt($curl, CURLOPT_POSTFIELDS, $params);
 
-                $headers = array(
-	                'X-Request-Origin: Joomla2.5|1.1|'.JPlatform::getShortVersion() 
-                );
-                curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+        $headers = array(
+                'X-Request-Origin: Joomla2.5|1.2|'.JPlatform::getShortVersion()
+        );
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
 
-		// call the page, it will return a JSON
 		$result = curl_exec($curl);
+		$jsonResult = json_decode($result);
 
-		if ($result)
+		if (!$jsonResult->status)
 		{
-			$jsonResult = json_decode($result);
-	
-			if (!$jsonResult->status)
-			{
-				// error
-				return false;
-			}
-			else
-			{
-				// if the user validates correctly, we will get the groups data
-				$apiKey = $jsonResult->data;
-				return $apiKey;
-			}
+			// error en grupos
+			return $jsonResult->error;
+			//return false;
 		}
 		else
 		{
-			return false;
-		}
-
-	}
-
-	public function verify($host, $user, $password)
-	{
-		$url = $this->getApiUrl($host);
-		$curl = curl_init($url);
-		$apiKey = $this->getApiKey($host, $user, $password);
-
-		if ($apiKey)
-		{
-			$params = array(
-				"function"=>"getGroups",
-				"apiKey"=>$apiKey
-			);
-			curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-			curl_setopt($curl, CURLOPT_POST, 1);
-			curl_setopt($curl, CURLOPT_POSTFIELDS, $params);
-
-                        $headers = array(
-                                'X-Request-Origin: Joomla2.5|1.1|'.JPlatform::getShortVersion() 
-                        );
-                        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-
-			$result = curl_exec($curl);
-			$jsonResult = json_decode($result);
-
-			if (!$jsonResult->status)
-			{
-				// error en grupos
-				return false;
-			}
-			else
-			{
-				return $jsonResult->data;
-			}
-		}
-		else
-		{
-			return false;
+			return $jsonResult->data;
 		}
 	}
 
@@ -189,9 +135,8 @@ class mailrelaysyncModelSettings extends JModelAdmin
         /**
         * Now we start the sync process
         */
-	public function sync($host, $user, $password, $groups)
+	public function sync($host, $apiKey, $groups)
 	{
-		$apiKey = $this->getApiKey($host, $user, $password);
 		$url = $this->getApiUrl($host);
 
                 $usuarios = $this->getAllUsers();
@@ -210,11 +155,11 @@ class mailrelaysyncModelSettings extends JModelAdmin
                         );
 
                         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-                        curl_setopt($curl, CURLOPT_POST, 1);            
+                        curl_setopt($curl, CURLOPT_POST, 1);
                         curl_setopt($curl, CURLOPT_POSTFIELDS, $params);
 
                         $headers = array(
-                                'X-Request-Origin: Joomla2.5|1.1|'.JPlatform::getShortVersion() 
+                                'X-Request-Origin: Joomla2.5|1.2|'.JPlatform::getShortVersion()
                         );
                         curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
 
@@ -227,7 +172,7 @@ class mailrelaysyncModelSettings extends JModelAdmin
                                 $data = $jsonResult->data;
                                 $usuarios_mailrelay = $data[0];
                         }
-                        
+
                         //We check if the user already exists in the API
                         if($usuarios_mailrelay->email == $usuario->email)
 			{
@@ -242,26 +187,26 @@ class mailrelaysyncModelSettings extends JModelAdmin
                                 );
 
                                 $post = http_build_query($params);
-                                
+
                                 curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
                                 curl_setopt($curl, CURLOPT_POST, 1);
                                 curl_setopt($curl, CURLOPT_POSTFIELDS, $post);
 
 	                        $headers = array(
-        	                        'X-Request-Origin: Joomla2.5|1.1|'.JPlatform::getShortVersion() 
+        	                        'X-Request-Origin: Joomla2.5|1.2|'.JPlatform::getShortVersion()
                 	        );
                         	curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
 
                                 $result = curl_exec($curl);
-                                
+
                                 $jsonResult = json_decode($result);
-                        
+
                                 if ($jsonResult->status) {
                                         $synced_users++;
                                 }
 
                         }else{
-                        
+
                                 // Call addSubscriber
                                 $params = array(
                                         'function' => 'addSubscriber',
@@ -272,19 +217,19 @@ class mailrelaysyncModelSettings extends JModelAdmin
                                 );
 
                                 $post = http_build_query($params);
-                                
+
                                 curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
                                 curl_setopt($curl, CURLOPT_POST, 1);
                                 curl_setopt($curl, CURLOPT_POSTFIELDS, $post);
 
 	                        $headers = array(
-        	                        'X-Request-Origin: Joomla2.5|1.1|'.JPlatform::getShortVersion() 
+        	                        'X-Request-Origin: Joomla2.5|1.2|'.JPlatform::getShortVersion()
                 	        );
                         	curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
                                 $result = curl_exec($curl);
-                                
+
                                 $jsonResult = json_decode($result);
-                        
+
                                 if ($jsonResult->status) {
                                         $synced_users++;
                                 }

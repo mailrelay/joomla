@@ -43,8 +43,7 @@ class plgUserMailrelay extends JPlugin
 		$data["autosync"] = $table->automatically_sync_user;
 		$data["autounsync"] = $table->automatically_unsync_user;
 		$data["host"] = $table->host;
-		$data["user"] = $table->user;
-		$data["password"] = $table->password;
+		$data["apiKey"] = $table->apiKey;
 		$data["groups"] = $table->groups;
 
 		return $data;
@@ -73,13 +72,13 @@ class plgUserMailrelay extends JPlugin
 		if ($data["autosync"])
 		{
 			// do the sync
-			$apiKey = $model->getApiKey($data["host"], $data["user"], $data["password"]);
+			$apiKey = $data["apiKey"];
 			$url = $model->getApiUrl($data["host"]);
 			$groups = explode(",", $data["groups"]);
 			$curl = curl_init($url);
 
 			$user_id = (int)$user['id'];
-	
+
 			if (empty($user_id)) {
 				die('invalid userid');
 				return false; // if the user id appears invalid then bail out just in case
@@ -101,7 +100,7 @@ class plgUserMailrelay extends JPlugin
 			curl_setopt($curl, CURLOPT_POSTFIELDS, $params);
 
                         $headers = array(
-                                'X-Request-Origin: Joomla2.5|1.1|'.JPlatform::getShortVersion()
+                                'X-Request-Origin: Joomla2.5|1.2|'.JPlatform::getShortVersion()
                         );
                         curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
 
@@ -184,13 +183,13 @@ class plgUserMailrelay extends JPlugin
 		if ($data["autounsync"])
 		{
 			// do the unsync
-			$apiKey = $model->getApiKey($data["host"], $data["user"], $data["password"]);
+			$apiKey = $data["apiKey"];
 			$url = $model->getApiUrl($data["host"]);
 			$groups = explode(",", $data["groups"]);
 			$curl = curl_init($url);
 
 			$user_id = (int)$user['id'];
-	
+
 			if (empty($user_id)) {
 				die('invalid userid');
 				return false; // if the user id appears invalid then bail out just in case

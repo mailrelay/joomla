@@ -7,7 +7,7 @@
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<authorEmail>info@mailrelay.com</authorEmail>
 	<authorUrl>www.mailrelay.com</authorUrl>
-	<version>2.5.0</version>
+	<version>2.5.1</version>
 	<description>Mailrelay user sync plugin</description>
 	<files>
 		<filename plugin="mailrelay">mailrelay.php</filename>

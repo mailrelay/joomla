@@ -13,7 +13,7 @@ class JFormRuleHost extends JFormRule
 
 		// validacion de datos correctos contra mailrelay
 		$model = JModel::getInstance("Settings", "MailrelaySyncModel");
-		$result = $model->verify($input->get("host"), $input->get("user"), $input->get("password"));
+		$result = $model->verify($input->get("host"), $input->get("apiKey"));
 		if (!$result)
 		{
 			// error de datos incorrectos
@@ -22,6 +22,10 @@ class JFormRuleHost extends JFormRule
 		}
 		else
 		{
+		    if (!is_array($result)) {
+		        $error = $result;
+			    return new JException($error);
+		    }
 			// parse groups
 			$entry_groups = array();
 			foreach($result as $item)
