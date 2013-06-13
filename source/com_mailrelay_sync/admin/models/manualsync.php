@@ -32,7 +32,7 @@ class mailrelaysyncModelManualsync extends JModelAdmin
          * @return      JTable  A database object
          * @since       1.6
          */
-        public function getTable($type = 'MailRelay', $prefix = 'Table', $config = array()) 
+        public function getTable($type = 'MailRelay', $prefix = 'Table', $config = array())
         {
                 $table = JTable::getInstance($type, $prefix, $config);
 		return $table;
@@ -45,11 +45,11 @@ class mailrelaysyncModelManualsync extends JModelAdmin
          * @return      mixed   A JForm object on success, false on failure
          * @since       1.6
          */
-        public function getForm($data = array(), $loadData = true) 
+        public function getForm($data = array(), $loadData = true)
         {
                 // Get the form.
                 $form = $this->loadForm('com_mailrelay_sync.manualsync', 'manualsync', array('control' => 'jform', 'load_data' => $loadData));
-                if (empty($form)) 
+                if (empty($form))
                 {
                         return false;
                 }
@@ -60,7 +60,7 @@ class mailrelaysyncModelManualsync extends JModelAdmin
          *
          * @return string       Script files
          */
-        public function getScript() 
+        public function getScript()
         {
                 return 'administrator/components/com_mailrelay_sync/models/forms/settings.js';
         }
@@ -70,21 +70,28 @@ class mailrelaysyncModelManualsync extends JModelAdmin
          * @return      mixed   The data for the form.
          * @since       1.6
          */
-        protected function loadFormData() 
+        protected function loadFormData()
         {
 		$data = JFactory::getApplication()->getUserState('com_mailrelay_sync.edit.manualsync.data', array());
 
                 // Check the session for previously entered form data.
-                if (empty($data)) 
+                if (empty($data))
                 {
                         $data = $this->getItem(1);
+                }
+                if (is_array($data)) {
+                    $data['host'] = trim($data['host']);
+                    $data['apiKey'] = trim($data['apiKey']);
+                } else {
+                    $data->host = trim($data->host);
+                    $data->apiKey = trim($data->apiKey);
                 }
                 return $data;
         }
 
 	public function verify($host, $user, $password)
 	{
-		$url = "http://".$host."/ccm/admin/api/version/2/&type=json";
+		$url = "https://".$host."/ccm/admin/api/version/2/&type=json";
 		$curl = curl_init($url);
 
 		$params = array(
@@ -96,9 +103,11 @@ class mailrelaysyncModelManualsync extends JModelAdmin
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($curl, CURLOPT_POST, 1);
 		curl_setopt($curl, CURLOPT_POSTFIELDS, $params);
+		curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($curl, CURLOPT_SSLVERSION, 3);
 
                 $headers = array(
-                	'X-Request-Origin: Joomla2.5|1.1|'.JPlatform::getShortVersion() 
+                	'X-Request-Origin: Joomla2.5|1.1|'.JPlatform::getShortVersion()
                 );
                 curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
 
@@ -107,7 +116,7 @@ class mailrelaysyncModelManualsync extends JModelAdmin
 		if ($result)
 		{
 			$jsonResult = json_decode($result);
-	
+
 			if (!$jsonResult->status)
 			{
 				// error
@@ -124,13 +133,13 @@ class mailrelaysyncModelManualsync extends JModelAdmin
 				curl_setopt($curl, CURLOPT_POSTFIELDS, $params);
 
                         	$headers = array(
-                                	'X-Request-Origin: Joomla2.5|1.1|'.JPlatform::getShortVersion() 
+                                	'X-Request-Origin: Joomla2.5|1.1|'.JPlatform::getShortVersion()
                         	);
                         	curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
 
 				$result = curl_exec($curl);
 				$jsonResult = json_decode($result);
-	
+
 				if (!$jsonResult->status)
 				{
 					// error en grupos

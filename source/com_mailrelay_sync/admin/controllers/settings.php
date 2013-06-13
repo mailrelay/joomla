@@ -57,6 +57,8 @@ class MailRelaySyncControllerSettings extends JControllerForm
 
                 // Populate the row id from the session.
                 $data[$key] = $recordId;
+                $data['host'] = trim($data['host']);
+                $data['apiKey'] = trim($data['apiKey']);
 
                 if (!$this->allowSave($data, $key))
                 {

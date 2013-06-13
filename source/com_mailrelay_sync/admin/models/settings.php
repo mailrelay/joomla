@@ -79,13 +79,20 @@ class mailrelaysyncModelSettings extends JModelAdmin
                 {
                         $data = $this->getItem(1);
                 }
+                if (is_array($data)) {
+                    $data['host'] = trim($data['host']);
+                    $data['apiKey'] = trim($data['apiKey']);
+                } else {
+                    $data->host = trim($data->host);
+                    $data->apiKey = trim($data->apiKey);
+                }
                 return $data;
         }
 
 	// retrieves the url for the API
 	public function getApiUrl($host)
 	{
-		return "http://".$host."/ccm/admin/api/version/2/&type=json";
+		return "https://".$host."/ccm/admin/api/version/2/&type=json";
 	}
 
 	public function verify($host, $apiKey)
@@ -100,6 +107,8 @@ class mailrelaysyncModelSettings extends JModelAdmin
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($curl, CURLOPT_POST, 1);
 		curl_setopt($curl, CURLOPT_POSTFIELDS, $params);
+		curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($curl, CURLOPT_SSLVERSION, 3);
 
         $headers = array(
                 'X-Request-Origin: Joomla3.0|1.2|'.JPlatform::getShortVersion()
@@ -157,6 +166,8 @@ class mailrelaysyncModelSettings extends JModelAdmin
                         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
                         curl_setopt($curl, CURLOPT_POST, 1);
                         curl_setopt($curl, CURLOPT_POSTFIELDS, $params);
+                        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+                        curl_setopt($curl, CURLOPT_SSLVERSION, 3);
 
                         $headers = array(
                                 'X-Request-Origin: Joomla3.0|1.2|'.JPlatform::getShortVersion()
