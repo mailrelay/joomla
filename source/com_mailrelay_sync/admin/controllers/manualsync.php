@@ -57,6 +57,8 @@ class MailRelaySyncControllerManualsync extends JControllerForm
 
                 // Populate the row id from the session.
                 $data[$key] = $recordId;
+                $data['host'] = trim($data['host']);
+                $data['apiKey'] = trim($data['apiKey']);
 
                 // Validate the posted data.
                 // Sometimes the form needs some posted data, such as for plugins and modules.
