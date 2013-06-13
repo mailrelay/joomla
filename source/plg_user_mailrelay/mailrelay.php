@@ -42,8 +42,8 @@ class plgUserMailrelay extends JPlugin
 		$data["id"] = $table->id;
 		$data["autosync"] = $table->automatically_sync_user;
 		$data["autounsync"] = $table->automatically_unsync_user;
-		$data["host"] = $table->host;
-		$data["apiKey"] = $table->apiKey;
+		$data["host"] = trim($table->host);
+		$data["apiKey"] = trim($table->apiKey);
 		$data["groups"] = $table->groups;
 
 		return $data;
@@ -98,6 +98,8 @@ class plgUserMailrelay extends JPlugin
 			curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 			curl_setopt($curl, CURLOPT_POST, 1);
 			curl_setopt($curl, CURLOPT_POSTFIELDS, $params);
+			curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+            curl_setopt($curl, CURLOPT_SSLVERSION, 3);
 
                         $headers = array(
                                 'X-Request-Origin: Joomla2.5|1.2|'.JPlatform::getShortVersion()
@@ -209,6 +211,8 @@ class plgUserMailrelay extends JPlugin
 			curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 			curl_setopt($curl, CURLOPT_POST, 1);
 			curl_setopt($curl, CURLOPT_POSTFIELDS, $params);
+			curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+            curl_setopt($curl, CURLOPT_SSLVERSION, 3);
 
 			$result = curl_exec($curl);
 			$jsonResult = json_decode($result);
